@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-ruvicha-busqueda
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-ruvicha-busqueda
+  template:
+    metadata:
+      labels:
+        app: api-ruvicha-busqueda
+    spec:
+      containers:
+      - name: api-ruvicha-busqueda
+        image: postgrest/postgrest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PGRST_DB_ANON_ROLE
+          value: "anon"
+        - name: PGRST_DB_SCHEMA
+          value: "busqueda_api"
+        - name: PGRST_DB_URI
+          value: "postgres://postgres:123456@db-ruvicha:5430/ruvicha"
+        - name: PGRST_JWT_SECRET
+          value: "FrYuu4IIi7sOAERnq5s4BBY6GL8xvOey"
+        - name: PGRST_OPENAPI_SERVER_PROXY_URI
+          value: "http://127.0.0.1:3000"
+        - name: PGRST_SERVER_PORT
+          value: "3000"

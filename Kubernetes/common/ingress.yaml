@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mkp-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "tupi.im"
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: api-proxy
+            port:
+              number: 80

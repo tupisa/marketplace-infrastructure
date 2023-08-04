@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-ruvicha
+spec:
+  # type: ClusterIP
+  # ports:
+  # - name: "db-ruvicha"
+  #   port: 5430
+  #   targetPort: 5432
+  #   protocol: TCP 
+  # selector:
+  #   app: db-ruvicha
+
+  type: NodePort
+  ports:
+  - name: "db-ruvicha"
+    port: 5430
+    targetPort: 5432
+    nodePort: 32000
+  selector:
+    app: db-ruvicha

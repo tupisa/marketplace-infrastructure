@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-datalake
+spec:
+  # type: ClusterIP
+  # ports:
+  # - name: "db-datalake"
+  #   port: 5431
+  #   targetPort: 5432
+  #   protocol: TCP
+  # selector:
+  #   app: db-datalake
+
+  type: NodePort
+  ports:
+  - name: "db-datalake"
+    port: 5431
+    targetPort: 5432
+    nodePort: 32001
+  selector:
+    app: db-datalake

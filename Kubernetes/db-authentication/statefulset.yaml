@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-authentication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-authentication
+  template:
+    metadata:
+      labels:
+        app: db-authentication
+    spec:
+      containers:
+        - name: db-authentication
+          image: 23-239-30-65.ip.linodeusercontent.com/marketplace/db-authentication
+          ports:
+            - containerPort: 5432
+              protocol: TCP  
+
+          env:
+          - name: POSTGRES_DB
+            value: "authentication"
+          - name: POSTGRES_PASSWORD
+            value: "123456"
+          - name: POSTGRES_USER
+            value: "postgres"
+
+          volumeMounts:
+            - name: db-authentication
+              mountPath: /var/lib/postgresql/data
+
+      imagePullSecrets:
+      - name: secret-harbor
+
+      volumes:
+        - name: db-authentication
+          # configMap:
+          #   name: db-authentication-configmap
+
+              
+  volumeClaimTemplates:
+    - metadata:
+        name: db-authentication
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        # storageClassName: "manual"
+        resources:
+          requests:
+            storage: 1Gi

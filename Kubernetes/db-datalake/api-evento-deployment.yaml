@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-datalake-evento
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-datalake-evento
+  template:
+    metadata:
+      labels:
+        app: api-datalake-evento
+    spec:
+      containers:
+      - name: api-datalake-evento
+        image: postgrest/postgrest
+        ports:
+        - containerPort: 3001
+        env:
+        - name: PGRST_DB_ANON_ROLE
+          value: "anon"
+        - name: PGRST_DB_SCHEMA
+          value: "evento_api"
+        - name: PGRST_DB_URI
+          value: "postgres://postgres:123456@db-datalake:5431/datalake"
+        - name: PGRST_JWT_SECRET
+          value: "FrYuu4IIi7sOAERnq5s4BBY6GL8xvOey"
+        - name: PGRST_OPENAPI_SERVER_PROXY_URI
+          value: "http://127.0.0.1:3001"
+        - name: PGRST_SERVER_PORT
+          value: "3001"
