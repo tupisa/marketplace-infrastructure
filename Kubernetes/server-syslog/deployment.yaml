@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: proxy
+  name: syslog-sss
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: proxy
+      app: syslog-sss
   template:
     metadata:
       labels:
-        app: proxy
+        app: syslog-sss
     spec:
       containers:
-      - name: proxy
-        image: harbor.tupi.im/marketplace/proxy:v0.1.0-1-stable
+      - name: syslog-sss
+        image: harbor.tupi.im/marketplace/syslog-sss:v0.1.0-1-stable
       imagePullSecrets:
       - name: secret-harbor

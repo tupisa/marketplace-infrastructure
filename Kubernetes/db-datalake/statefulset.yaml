@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: db-datalake
-          image: 23-239-30-65.ip.linodeusercontent.com/marketplace/db-datalake
+          image: harbor.tupi.im/marketplace/db-datalake:v0.1.0-1-stable
           ports:
             - containerPort: 5432
               protocol: TCP  
