@@ -15,7 +15,7 @@ spec:
 
       containers:
         - name: db-ruvicha
-          image: harbor.tupi.im/marketplace/db-ruvicha:v0.1.0-1-stable
+          image: harbor.tupi.im/marketplace/db-ruvicha:0.1.0-1-stable
           ports:
             - containerPort: 5432
               protocol: TCP  

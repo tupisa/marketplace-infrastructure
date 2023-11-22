@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: db-datalake
-          image: harbor.tupi.im/marketplace/db-datalake:v0.1.0-1-stable
+          image: harbor.tupi.im/marketplace/db-datalake:0.1.0-1-stable
           ports:
             - containerPort: 5432
               protocol: TCP  

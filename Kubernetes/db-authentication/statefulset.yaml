@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: db-authentication
-          image: harbor.tupi.im/marketplace/db-authentication:v0.1.0-1-stable
+          image: harbor.tupi.im/marketplace/db-authentication:0.1.0-1-stable
           ports:
             - containerPort: 5432
               protocol: TCP  
